@@ -101,7 +101,7 @@ class Calculator {
 }
 
 // calculator reference
-let calc = new Calculator("", "5335");
+let calc = new Calculator("", "0");
 
 
 // allclear
