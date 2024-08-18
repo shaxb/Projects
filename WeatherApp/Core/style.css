@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-image: url(../background-imges/Morning.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.container {
+    width: 20%;
+    height: 70vh;
+    margin: 0 auto;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7%;
+}
+
+.searchbar input {
+    width: 90%;
+    height: 100%;
+    padding: 0 1rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.877);
+    color: white;
+}
+.btn-search {
+    width: 12%;
+    height: 100%;
+    font-size: 1rem;
+    padding: 2px;
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+  }
+
+.btn-search:hover{
+    border: 1px solid white;
+}
+
+.btn-search img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.searchbar input::placeholder{
+    color: white;
+}
+
+
+/*  wheather */
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 53%;
+}
+
+.weather h2 {
+    color: white;
+    align-self: center;
+    margin-top: 1.5rem;
+}
+
+.shape {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+
+.wheather-icon{
+    width: 60%;
+    height: 61%;
+    
+}
+
+
+.temp {
+    color: white;
+    font-size: 2.5rem;
+    align-self: center;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.day {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 300;
+    align-self: center;
+    margin-top: 0.5rem;
+}
+
+
+
+
+/* date */
+
+.date {
+    height: auto;
+    color: rgb(3, 94, 63);
+    font-size: 1.2rem;
+    align-self: center;
+    font-weight: 300;
+}
+
+
+.info {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 12%;
+    color: white;
+    font-size: 1rem;
+}
+.info-container {
+    width: 22%;
+    height: 100%    ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(39, 182, 182, 0.253);
+    border-radius: 10px;
+    color: white;
+}
+
+.info-container img {
+    width: 50%;
+    height: 55%;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    /* background-color: azure; */
+
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: row;
+    height: 33%;
+    justify-content: space-around;
+}
+
+.forecast-item img {
+    transform: scale(1.2);
+}
+
+.forecast-item p {
+    margin-top: 0.5rem;
+}
