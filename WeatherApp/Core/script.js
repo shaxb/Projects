@@ -61,32 +61,35 @@ convertDate(dateString) {
 }
 
 
-    timeDivider(timeString){
-        const [date, time] = timeString.split(" ");
-        const [year, month, day] = date.split("-");
-        const [hours, minutes] = time.split(":").map(Number);
-        const sunrise = new Date(`${date}T06:00:00`);
-        const sunset = new Date(`${date}T18:00:00`);
-        const now = new Date(`${date}T${hours}:${minutes}:00`);
+timeDivider(timeString){
+  const [date, time] = timeString.split(" ");
+  const [year, month, day] = date.split("-");
+  const [hours, minutes] = time.split(":").map(Number);
+  const sunrise = new Date(`${date}T06:00:00`);
+  const sunset = new Date(`${date}T17:00:00`);
+  const noon = new Date(`${date}T13:00:00`);
+  const now = new Date(`${date}T${hours}:${minutes}:00`);
 
-        if (now >= sunrise && now < sunset) {
-            return "day";
-        } else if (now >= new Date(`${date}T00:00:00`) && now < sunrise) {
-            return "night";
-        } else if (now > sunset && now <= new Date(`${date}T23:59:59`)) {
-            return "night";
-        } else {
-            return "night";
-        }
-    }
+  if (now >= sunrise && now < noon) {
+    return "morning";
+  } else if (now >= noon && now < sunset) {
+    return "noon";
+  } else if (now >= sunset && now <= new Date(`${date}T20:00:00`)) {
+    return "sunset";
+  } else if (now > new Date(`${date}T20:00:00`) && now <= new Date(`${date}T23:59:59`)) {
+    return "night";
+  } else {
+    return "night";
+  }
+}
 
     setBackgroundImage(timeString){
         const timePart = this.timeDivider(timeString);
         const images = {
-            day: "../background-imges/SunSet.jpg",
+            sunset: "../background-imges/SunSet.jpg",
             night: "../background-imges/Night.jpg",
             morning: "../background-imges/Morning.jpg",
-            afternoon: "../background-imges/Afternoon.jpg"
+            noon: "../background-imges/Afternoon.jpg"
         };
         document.body.style.backgroundImage = `url(${images[timePart]})`;
     }
@@ -97,7 +100,7 @@ convertDate(dateString) {
             
             const forecastObj = {
                 date:this.convertDate(day["date"]).split(",")[0],
-                icon: day["day"]["condition"]["icon"],
+                icon: `https:${day["day"]["condition"]["icon"]}`,
                 temp: this.removeDecimal(day["day"]["mintemp_c"]) + " - " + this.removeDecimal(day["day"]["maxtemp_c"]) + "°C",
             };
             this.forecast.push(forecastObj);
@@ -110,7 +113,7 @@ convertDate(dateString) {
 
     FillWeatherData(responseData) {
         city.innerText = `${responseData["location"]["name"]}`;
-        icon.src = `${responseData["current"]["condition"]["icon"]}`;
+        icon.src = `https:${responseData["current"]["condition"]["icon"]}`;
         temp.innerText = this.removeDecimal(responseData["current"]["temp_c"]) + "°C";
         day.innerText = responseData["current"]["condition"]["text"];
         date.innerText = this.convertDate(responseData["location"]["localtime"]);
